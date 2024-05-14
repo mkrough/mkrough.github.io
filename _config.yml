@@ -1,4 +1,9 @@
-name: MKrough's Git'in It
-remote_theme: pages-themes/time-machine@v0.2.0
-plugins:
-- jekyll-remote-theme # add this line to the plugins list if you already have one
+# Site settings
+title: Gitin After It
+author:
+  name: MKrough
+  email: renton8596@yahoo.com
+description: "Baby's First GitHub"
+
+# Build settings
+remote_theme: jekyll/minima
