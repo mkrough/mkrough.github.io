@@ -1,3 +1,4 @@
 # mkrough.github.io
-first time navigating GitHub
-trying (and trying and trying) to get GitHub Pages up and running
+Welcome to my first GitHub page!
+Please check out
+my first [Financial Analysis Dashboard] (file:///C:/Users/mevil/Documents/DATA_ANALYTICS/MSFT_Financial_Analysis_MK.htm)
