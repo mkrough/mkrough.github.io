@@ -1,9 +1,6 @@
 # Site settings
 title: Gitin After It
-author:
-  name: MKrough
-  email: renton8596@yahoo.com
-description: "Baby's First GitHub"
+description: Baby's First GitHub
 
 # Build settings
-remote_theme: jekyll/minima
+remote_theme: pages-themes/time-machine@v0.2.0
