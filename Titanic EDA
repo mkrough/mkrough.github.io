@@ -1,0 +1,61 @@
+---
+title: "Titanic EDA"
+author: "Melissa Krough"
+date: "2024-09-28"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(readxl)
+titanic<-read_xlsx('titanic_partial.xlsx')
+```
+
+## Exploratory Data Analysis of the Titanic Dataset
+
+This is a cleaned version of the titanic (training) dataset [published on Kaggle](https.//www.kaggle.com/jamesleslie/titanic-cleaned-data?select=train_clean.csv). Here is a quick statistical summary. 
+
+```{r summary, echo=FALSE}
+  summary(titanic)
+```
+
+###Single-Variable Analysis
+*inspect all variable distributions
+```{r}
+#1. ignore Ticket, Name, PassengerID - as these are all unique and cannot be
+#analyzed or compared
+#2. Sibsp and Parch is redundant because Family_Size is more useful
+#3. cabins have a lot of unique names and a lot of NAs so cabin vs. no cabin
+#is probably most useful for this column
+table(is.na.data.frame(titanic))
+titanic$Pclass <- as.character(titanic$Pclass)
+library(ggplot2)
+ggplot(data=titanic)+
+  geom_bar(mapping=aes(x=Age))
+titanic$Pclass<-as.factor(titanic$Pclass)
+titanic$Title<-as.factor(titanic$Title)
+titanic$Sex<-as.factor(titanic$Sex)
+titanic$Embarked<-as.factor(titanic$Embarked)
+library(tidyverse)
+```
+
+###Multi-Variable Analysis
+*compare variables to the value of interest(**Survived**)
+```{r}
+#percent_survived<-titanic %>% 
+  #group_by(Sex, Pclass, Family_Size) %>% 
+  #summarise(count=n(), avg=mean(Survived, rm.na=TRUE))
+#ggplot(data=percent_survived)+
+  #geom_bar(mapping=aes(x=Age))
+ggplot(data = titanic) +
+  geom_point(mapping=aes(x=Fare,y=Title,color=Survived))
+#i like the one above - interesting breakdown
+ggplot(data = titanic) +
+  geom_point(mapping=aes(x=Age,y=Sex,color=Survived))
+ggplot(data = titanic) +
+  geom_point(mapping=aes(x=Pclass,y=Sex,color=Survived))
+#this is the one that best answers the assignment question
+ggplot(data=titanic)+
+  geom_bar(mapping=aes(x=Survived))
+```
+###Summary
